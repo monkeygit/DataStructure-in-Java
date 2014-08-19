@@ -82,14 +82,14 @@ public class MyLinkedList<T extends Comparable<T>> implements Iterable<T>{
 	/*
 	 * 3.3
 	 */
-	public boolean contains(T x){
-		Node<T> p;
-		for(int i=0; i<size(); i++){
-			p = getNode(i);
-			if(p.data.equals(x))
-				return true;
+	public Iterator<T> contains(T x){
+		Node<T> p = null;
+		Iterator<T> itr = this.iterator();
+		while(itr.hasNext()){
+			if(itr.next() == x)
+				return itr;
 		}
-		return false;
+		return null;
 	}
 	
 	@Override
@@ -120,10 +120,10 @@ public class MyLinkedList<T extends Comparable<T>> implements Iterable<T>{
 		return dst;
 	}
 	
-	public MyLinkedList<T> interSection(MyLinkedList<T> one, MyLinkedList<T> another){
+/*	public MyLinkedList<T> interSection(MyLinkedList<T> one, MyLinkedList<T> another){
 		MyLinkedList<T> result = new MyLinkedList<T>();
 		
-	}
+	}*/
 	
 	/*
 	 * union
@@ -155,6 +155,37 @@ public class MyLinkedList<T extends Comparable<T>> implements Iterable<T>{
 		}
 		return result;
 	}
+	
+	/*
+	 * 3.9 
+	 * O(n)
+	 */
+	public void addAll(Iterable<? extends T> items){
+		Iterator<? extends T> itr = items.iterator();
+		while(itr.hasNext()){
+			this.add(itr.next());
+		}
+	}
+	
+	/*
+	 * 3.10
+	 * O(M*N)
+	 */
+	public void removeAll(Iterable<? extends T> items){
+		Iterator<? extends T> itrItems = items.iterator();
+		T element,item;
+		Node<T> p = null;
+		while(itrItems.hasNext()){
+			item = itrItems.next();
+			Iterator<? extends T> itrList = iterator();
+			while(itrList.hasNext()){
+				element = itrList.next();
+				if(element.equals(item))
+					itrList.remove();
+			}
+		}
+	}
+	
 	
 	private Node<T> getNode(int idx){
 		Node<T> p;
