@@ -187,59 +187,10 @@ public class MyLinkedList<T extends Comparable<T>> implements Iterable<T>{
 	}
 	
 	/*
-	 * 3.11.a
+	 * 3.15
 	 */
 	
-	public int sizeEX(){
-		Node<T> p = beginMarker.next;
-		int s = 0;
-		while(p != null){
-			s++;
-			p = p.next;
-		}
-		return s;
-	}
-	
-	/*
-	 * 3.11.b
-	 */
-	public void printEX(){
-		Node<T> p = beginMarker.next;
-		while(p != null){
-			System.out.print(p.data);
-		}
-	}
-	
-	/*
-	 * 3.11.c
-	 */
-	public boolean containsEX(T x){
-		Node<T> p = beginMarker.next;
-		while(p != null){
-			if(p.data == x)
-				return true;
-		}
-		return false;
-	}
-	
-	/*
-	 * 3.11.d
-	 * return true if list not contains x, and insert x into the tail
-	 * return false if list contais x
-	 */
-	public boolean addIfNotContains(T x){
-		if(containsEX(x))
-			return false;
-		else{
-			Node<T> newNode = new Node<T>(x, beginMarker, beginMarker.next);
-			newNode.next.prev = newNode;
-			beginMarker.next = newNode;
-			return true;
-		}
-	}
 
-
-	
 	
 	private Node<T> getNode(int idx){
 		Node<T> p;
