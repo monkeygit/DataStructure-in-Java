@@ -190,7 +190,39 @@ public class MyLinkedList<T extends Comparable<T>> implements Iterable<T>{
 	 * 3.15
 	 */
 	
+/*	public void splice(Iterator<T> itr, MyLinkedList<? extends T> lst){
+		
+	}*/
+	
+	/*
+	 * 3.16
+	 */
+	
+/*	Iterator<T> reverseIterator(){
+		return new ArrayListReverseIterator();
+	}
+	
+	private class ArrayListReverseIterator implements Iterator<T>{
+		
+		private int current = size() - 1;
+		
+		@Override
+		public boolean hasNext() {
+			return current >= 0;
+		}
 
+		@Override
+		public T next() {
+			if(!hasNext())
+				throw new NoSuchElementException();
+			return theItems[current--];
+		}
+
+		@Override
+		public void remove() {
+			this.remove(--current);
+		}	
+	}*/
 	
 	private Node<T> getNode(int idx){
 		Node<T> p;
