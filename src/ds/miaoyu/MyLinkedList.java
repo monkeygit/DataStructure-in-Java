@@ -252,6 +252,28 @@ public class MyLinkedList<T extends Comparable<T>> implements Iterable<T>{
 		return p.data;
 	}
 	
+	/*
+	 * 3.18
+	 */
+	public void addFirst(T x){
+		add(0, x);
+	}
+	public void addLast(T x){
+		add(size() - 1, x);
+	}
+	public T removeFrist(){
+		return remove(0);
+	}
+	public T removeLast(){
+		return remove(size() - 1);
+	}
+	public T getFirst(){
+		return get(0);
+	}
+	public T getLast(){
+		return get(size() - 1);
+	}
+	
 	private void addBefore(Node<T> p, T x){
 		Node<T> newNode = new Node<T>(x, p.prev, p);
 		p.prev.next = newNode;
